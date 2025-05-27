@@ -1,5 +1,4 @@
 console.log(range(1,10)); 
-console.log(range(5,2,-1)); 
 console.log(sum(range(1,10))); 
 
 function range(start, end) {
@@ -8,5 +7,13 @@ function range(start, end) {
         myArr.push(i); 
     }
     return myArr;
+}
+
+function sum([...numbers]) {
+    let sum = 0; 
+    for (each of numbers) {
+        sum += each; 
+    }
+    return sum; 
 }
 
