@@ -14,6 +14,12 @@ console.log(arrayToList([10,20]));
 console.log(listToArray(arrayToList([10,20,30])));
 console.log(prepend(10, prepend(20, null)));
 console.log(nth(arrayToList([10, 20, 30]), 1));
+console.log(nthRecursive(arrayToList([10, 20, 30]), 1));
+
+function nthRecursive(list, index) {
+    if (index == 0) return list.value;
+    return nthRecursive(list.rest, index - 1); 
+}
 
 function nth(list, index) {
     let counter = 0;
