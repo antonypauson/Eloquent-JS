@@ -12,6 +12,12 @@ let list = {
 
 console.log(arrayToList([10,20])); 
 console.log(listToArray(arrayToList([10,20,30])));
+console.log(prepend(10, prepend(20, null)));
+
+function prepend(value, list) {
+    let newList = {value: value, rest: list};
+    return newList;  
+}
 
 function listToArray(list) {
     let myArr = []; 
