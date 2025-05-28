@@ -20,4 +20,26 @@ noisy(Math.min)(3,2,1);
 //then (3,2,1) is called
 
 console.log("----------");
+function repeat(number, action) { //same as before, repeat action function 
+    for (let i = number; i >= 0; i--) { //n times
+        action(i); 
+    }
+}
+
+function unless(test, then) { //if test() returns false, 
+    if (!test) then();        //execute then() 
+}
+
+repeat(3, n=> { //repeat 3 times from 3 to 0
+    unless(n % 2 == 1, () => { //returns false, print even
+        console.log(n, "is even"); 
+    }); 
+}); 
+
+
+let myArr = [2,4,6,8];
+myArr.forEach(i => {
+    console.log(i); 
+}); 
+
 
