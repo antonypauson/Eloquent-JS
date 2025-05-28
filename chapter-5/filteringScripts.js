@@ -1,9 +1,6 @@
 const SCRIPTS = require('./SCRIPTS.js'); 
 
-
-
-
-console.log(filter(SCRIPTS, script => script.living));
+console.log(filter(SCRIPTS, script => script.living)); //returns script.living
 
 function filter(script, test) {
     let passed = []; 
@@ -16,3 +13,6 @@ function filter(script, test) {
 } 
 
 console.log("----------"); 
+
+console.log(SCRIPTS.filter(each => each.living));
+console.log(SCRIPTS.filter(each => each.name == "Malayalam"));  
