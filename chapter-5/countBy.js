@@ -14,3 +14,5 @@ function countBy(items, groupName) {
     } 
     return counts; 
 }
+
+module.exports = countBy; 
