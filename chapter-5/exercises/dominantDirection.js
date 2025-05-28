@@ -16,7 +16,6 @@ function dominantDirection(text) {
         return a.count < b.count ? b : a; 
     }).name; 
 
-    return SCRIPTS.filter(n => n.name == dominantScript)
-    .map(n => n.direction).join(""); 
+    return SCRIPTS.find(n => n.name == dominantScript).direction;
     
 }
