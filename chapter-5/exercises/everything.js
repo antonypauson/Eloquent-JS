@@ -6,8 +6,6 @@ function every(array, test) {
     return !array.some(element => !test(element));
 }
 
-
-
 function every2(array, test)  {
     
     for (let each of array) {
