@@ -1,6 +1,6 @@
 const countBy = require("./countBy.js");
 const characterScript = require("./characterScript.js"); 
-console.log(textScripts('英国的狗说"woof", 俄罗斯的狗说"тяв"'));
+//console.log(textScripts('英国的狗说"woof", 俄罗斯的狗说"тяв"'));
 
 function textScripts(text) {
     let scripts = countBy(text, char => {
@@ -16,5 +16,4 @@ function textScripts(text) {
     }).join(", "); 
 }
 
-let char = '英国的狗说"woof", 俄罗斯的狗说"тяв"';
 
