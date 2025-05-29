@@ -32,9 +32,15 @@ class Temperature {
         this.celsius = (value - 32) / 1.8; //converting to celsius
     }
 
+    static fromFahrenhit(value) {
+        return new Temperature((value - 32) / 1.8); 
+    }
+
 }
 
 let temp = new Temperature(22); //constructor
 console.log(temp.fahrenheit); //getter
 temp.fahrenheit = 86; //setter
 console.log(temp.celsius); //property this.celsius
+let boil = Temperature.fromFahrenhit(212);
+console.log(boil.celsius); 
