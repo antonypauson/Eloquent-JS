@@ -9,5 +9,13 @@ let user = { //normal object
     }
 }
 
-console.log(user.firstName); 
-console.log(user.getFullName); //ingane vilikkaam, not function call 
+// console.log(user.firstName); 
+// console.log(user.getFullName); //ingane vilikkaam, not function call 
+
+let varyingSize = {
+    get size() {
+        return Math.floor(Math.random() * 100)
+    }
+}
+
+console.log(varyingSize.size); 
