@@ -4,12 +4,12 @@ class ListIterator {
     }
 
     next() {
-        if (this.list == null) {
+        if (this.list == null) { //when list is null, stop
             return {done: true}; 
         }
-        let value = this.list.value; 
-        this.list = this.list.rest; 
-        return {value, done: false}; 
+        let value = this.list.value; //get value as value
+        this.list = this.list.rest;  //update list with rest
+        return {value, done: false}; //return 
     }
 }
 
@@ -33,8 +33,8 @@ class List {
         return result; 
     }
 
-    [Symbol.iterator] = function() {
-        return new ListIterator(this); 
+    [Symbol.iterator] = function() { //same thing for list
+        return new ListIterator(this); //calls iterator class each time
     }
 }
 
