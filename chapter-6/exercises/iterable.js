@@ -1,6 +1,26 @@
+class GroupIterator {
+    constructor(group) {
+        this.members = group.members;
+        this.index = 0;  
+    }
+
+
+    next() {
+        if (this.index >= this.members.length) {
+            return {done: true}; 
+        }
+        let value = this.members[this.index];
+        this.index++;  
+        return {value, done: false}; 
+    }
+}
 class Group {
     constructor() {
         this.members = []; 
+    }
+
+    [Symbol.iterator]() {
+        return new GroupIterator(this); 
     }
 
     add(value) {
@@ -30,14 +50,8 @@ class Group {
         } 
         return group; 
     }
-
 }
-let group = Group.from([10, 20]);
-console.log(group.has(10));
-console.log(group.has(30));
 
-group.add(10);
-group.delete(10);
-console.log(group.has(10));
-
-
+for (let each of Group.from(["a", "b", "c"])) {
+    console.log(each);
+}
