@@ -37,12 +37,28 @@ VillageState.random = function(parcelCount = 5) {
     return new VillageState("Post Office", parcels); 
 }
 
-let postOfficeState = VillageState.random();
-console.log(postOfficeState);
+// let postOfficeState = VillageState.random();
+// console.log(postOfficeState);
 
 function randomRobot(state) {
     return {direction: randomPick(roadGraph[state.place])}
 }
+
+const mailRoute = [
+  "Alice's House", "Cabin", "Alice's House", "Bob's House",
+  "Town Hall", "Daria's House", "Ernie's House",
+  "Grete's House", "Shop", "Grete's House", "Farm",
+  "Marketplace", "Post Office"
+]; 
+
+function routeRobot(state, memory) {
+    if (memory.length == 0) {
+        memory = mailRoute;
+    }
+    return {direction: memory[0], memory: memory.slice(1)};  
+}
+
+
 
  function runRobot(state, robot, memory) {
     for (let turn = 0; ; turn++) {
@@ -57,10 +73,7 @@ function randomRobot(state) {
         }
 }
 
+runRobot(VillageState.random(), routeRobot, []); 
 
-// let first = new VillageState(
-//     "Post Office", 
-//     [{place: "Post Office", address: "Alice's House"}]
-// ); 
-// let next = first.move("Alice's House");
-// console.log(next); 
+
+
