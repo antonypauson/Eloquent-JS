@@ -87,6 +87,32 @@ function findRoute(graph, from, to) {
         }
 }
 
+function efficientRobot({place, parcels}, route) {
+    if (route.length == 0) {
+        let routes = [];
+
+        for (let parcel of parcels) {
+            if (parcel.place != place) {
+                let path = findRoute(roadGraph, place, parcel.place);
+                routes.push({route: path, isPickup: true});
+            } else {
+                let path = findRoute(roadGraph, place, parcel.address);
+                routes.push({route: path, isPickup: false});
+            }
+        }
+
+        route = routes.reduce((shortest, current) => {
+            if (!shortest) return current;
+            if (current.route.length < shortest.route.length) return current; 
+            if (current.route.length == shortest.route.length && current.isPickup) return current;
+            return shortest;  
+        }, null).route; 
+    }
+    return {direction: route[0], memory: route.slice(1)}; 
+}
+// runRobot(VillageState.random(), efficientRobot, []); 
+
+
 function goalOrientedRobot({place, parcels}, route) {
     if (route.length == 0) {
         let parcel = parcels[0];
@@ -109,7 +135,7 @@ function compareRobots(robot1, memory1, robot2, memory2) {
     let robot1Steps = 0, robot2Steps = 0;
 
     for (let i = 0; i < 100; i++) {
-        let randomState = VillageState.random(1);
+        let randomState = VillageState.random();
         robot1Steps += runRobot(randomState, robot1, memory1);
         robot2Steps += runRobot(randomState, robot2, memory2);
     }
@@ -117,6 +143,6 @@ function compareRobots(robot1, memory1, robot2, memory2) {
 Robot 2 takes ${average(robot2Steps)} steps in average`);
 }
 
-compareRobots(routeRobot, [], goalOrientedRobot, []);
+compareRobots(efficientRobot, [], goalOrientedRobot, []);
 
 
