@@ -1,7 +1,13 @@
-(parseINI(
+console.log(parseINI(
 `name=Vasilis
 [address]
-city=Tessaloniki`)); 
+city=Tessaloniki
+area=suburban
+phone=0000
+[friend]
+name=Antony
+place=Russia
+phone=911`)); 
 
 function parseINI(string) {
     let result = {};
@@ -9,7 +15,7 @@ function parseINI(string) {
     
     for (let line of string.split(/\r?\n/)) {
         let match; 
-        // console.log(line);
+
         if (match = /^(\w+)=(\w+)$/.exec(line)) {
             section[match[1]] = match[2];
             // console.log(section);
@@ -18,8 +24,6 @@ function parseINI(string) {
         } else if (!/^\s*(;|$)/.exec(line)) {
             throw new Error(`Line '${line}' is invalid`);
         }
-        console.log(result);
-        console.log("**********")
-        console.log(section);
     }
+    return result; 
 }
