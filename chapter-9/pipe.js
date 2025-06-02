@@ -1,11 +1,16 @@
-console.log(/\d+ (pig|chicken|cow)s?/.exec("1 pig"));
-console.log(/\d+ (pig|chicken|cow)s?/.exec("1000 chickens"));
+// console.log(/\d+ (pig|chicken|cow)s?/.exec("1 pig"));
+// console.log(/\d+ (pig|chicken|cow)s?/.exec("1000 chickens"));
 
-console.log(/cat|dog/.exec("I have a cat"));
-console.log(/cat|dog/.exec("I have a chicken"));
+// console.log(/cat|dog/.exec("I have a cat"));
+// console.log(/cat|dog/.exec("I have a chicken"));
 
-console.log(/a(b|c)d/.exec("abc"));
-console.log(/a(b|c)d/.exec("abd"));
+// console.log(/a(b|c)d/.exec("abc"));
+// console.log(/a(b|c)d/.exec("abd"));
 
-console.log(/^https?|ftp/.exec("http:x.com"));
-console.log(/^https?|ftp/.exec("ftp.com"));
+// console.log(/^https?|ftp/.exec("http:x.com"));
+// console.log(/^https?|ftp/.exec("ftp.com"));
+
+//binary, hexadecimal or decimal matching
+console.log(/^[01]+|\d+|[\da-f]+$/.exec("000001"));
+console.log(/^[01]+|\d+|[\da-f]+$/.exec("aaaf"));
+
