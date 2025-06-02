@@ -33,3 +33,10 @@ function minusOne(match, amount, unit) {
     }
     return amount + " " + unit;
 }
+
+function stripComments(code) {
+    return code.replace(/\/\/[^]*|\/\*[^]*?\*\//g, "");
+}
+
+console.log(stripComments("this is a program //this is a comment"));
+console.log(stripComments("hey /* saying hey */ heyhey /* saying heyhey */"));
