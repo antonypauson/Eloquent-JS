@@ -14,3 +14,22 @@ function getDate(string) {
     let [_, month, day, year] = /(\d{1,2})-(\d{1,2})-(\d{4})/.exec(string);
     return new Date(year, month - 1, day);
 }
+
+console.log(/(\d{1,2})-(\d{1,2})-(\d{4})/.exec("100-1-30"));
+
+
+//^ starts with that
+//$ ends with that
+console.log("^^^^^^^^^^^^^")
+console.log(/^abc/.test("abcwowowow"));
+console.log(/^abc/.test("bangabc"));
+console.log(/(abc)+/.test("bangabc"));
+console.log(/abc/.test("bangabc"));
+console.log("$$$$$$$$$$$$$$")
+console.log(/abc$/.test("bangabc"));
+console.log(/abc$/.test("abcwowowo"));
+console.log("^$^$^$^^$^$^$^^$^$^$^")
+console.log(/^\d+$/.test("1banb12"));
+console.log(/^\d.*\d$/.test("1banby12"));
+
+
