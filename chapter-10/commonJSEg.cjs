@@ -7,9 +7,9 @@ const {days, months} = require("date-names");
 // console.log(days[3]);
 // console.log(months[11]);
 
-console.log(formatDate(new Date(2017, 9, 13), "dddd the Do"));
+// console.log(formatDate(new Date(2017, 9, 13), "dddd the Do"));
 
-function formatDate(date, format) {
+exports.formatDate = function (date, format) {
     return format.replace(/YYYY|M(MMM)?|Do?|dddd/g, tag => {
         if (tag == "YYYY") return date.getFullYear();
         if (tag == "M") return date.getMonth();
