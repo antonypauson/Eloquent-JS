@@ -28,6 +28,7 @@ function buildGraph(edges) {
 }
 const roadGraph = buildGraph(roads);
  
+console.log(roadGraph);
 // console.log(roadGraph);
 
-module.exports = roadGraph;
+// module.exports = roadGraph;
