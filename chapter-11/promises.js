@@ -68,3 +68,17 @@ function jsonFile(filename) {
 }
 
 jsonFile("package.json").then(console.log);
+
+someAsyncFunction((error, value) => {
+    if (error) handleError(error); 
+    else processValue(value); 
+})
+
+function someAsyncFunction(callback) {
+    let success = Math.random * 1; 
+    if (success) {
+        callback(null,success); 
+    } else {
+        callback("Something went wrong", null);
+    }
+}
