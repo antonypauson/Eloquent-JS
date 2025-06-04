@@ -49,8 +49,11 @@ promise.then(result => { //then() works
 
 
 function textFile(filename) {
-    return new Promise(resolve =>{
-        readTextFile(filename, text => resolve(text));
+    return new Promise((resolve,reject) =>{
+        readTextFile(filename, (text, error) => {
+            if (error) reject(error); 
+            else resolve(text); 
+        } )
     })
 }
 
