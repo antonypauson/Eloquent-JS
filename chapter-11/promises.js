@@ -34,15 +34,6 @@ readTextFile("shopping.txt").then(content => {
     console.error("Oops", error)
 }); 
 
-
-
-
-
-
-
-
-
-
 let promise = new Promise((resolve, reject) => {
     //resolve it after 2s
     setTimeout(() => {
@@ -55,3 +46,12 @@ promise.then(result => { //then() works
 }).catch(error => {
     console.log("Error: ", error); 
 })
+
+
+function textFile(filename) {
+    return new Promise(resolve =>{
+        readTextFile(filename, text => resolve(text));
+    })
+}
+
+textFile("plan.txt").then(console.log);
