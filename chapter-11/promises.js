@@ -8,6 +8,41 @@ let errorPromise = Promise.reject("Something went wrong");
 //so works with catch()
 errorPromise.catch(error => console.log("Error:", error));
 
+
+function readTextFile(fileName) {
+    return new Promise((resolve, reject) => {
+        setTimeout(() => {
+            const fakeFiles = {
+                "shopping.txt": "Milk\nEggs\nBread", 
+                "todo.txt": "Wash car\nBuy groceries"
+            }
+
+            if (fakeFiles[fileName]) {
+                resolve(fakeFiles[fileName])
+            } else {
+                reject("File not Found:" + fileName)
+            }
+        }, 5000)
+    })
+}
+
+readTextFile("shopping.txt").then(content => {
+    return content.split("\n"); 
+}).then(items => {
+    console.log("You need to buy:", items.join(","));
+}).catch(error => {
+    console.error("Oops", error)
+}); 
+
+
+
+
+
+
+
+
+
+
 let promise = new Promise((resolve, reject) => {
     //resolve it after 2s
     setTimeout(() => {
