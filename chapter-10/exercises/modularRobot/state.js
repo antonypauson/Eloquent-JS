@@ -8,7 +8,7 @@ class VillageState {
     }
 
     move(destination) {
-        if (!roadGraph[this.place].includes(destination)) {
+        if (!(destination in roadGraph[this.place])) {
             return this; 
         } else {
             let parcels = this.parcels.map(each => {
@@ -30,11 +30,12 @@ VillageState.random = function(parcelCount = 5) {
         } while (place == address);
         parcels.push({place,address}); 
     }
-    return new VillageState("Post Office", parcels); 
+    return new VillageState("Farm", parcels); 
 }
 
-// let postOfficeState = VillageState.random();
-// console.log(postOfficeState)
+let postOfficeState = VillageState.random();
+console.log(postOfficeState);
+
 
 function runRobot(state, robot, memory) {
     for (let turn = 0; ; turn++) {
