@@ -57,7 +57,17 @@ function textFile(filename) {
     })
 }
 
-textFile("plan.txt").then(console.log);
+new Promise((_, reject) => reject(new Error("Fail")))
+    .then(value => console.log("Handler 1: ", value))
+    .catch(reason => {
+        console.log("Caught failure " + reason);
+        return "Nothing";
+    })
+    .then(value => console.log("Handler 2: ", value));
+
+
+
+textFile("plan.txt").then(console.log).catch(console.log);
 
 function randomFile(listFile) {
     return textFile(listFile)
