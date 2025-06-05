@@ -18,4 +18,17 @@ function createDog(name) {
     }
 }
 
+const score = [80,90,99];
+score.map((each, i) => {
+    console.log(`${each} at ${i+1} semester`);
+})
+
+let stopped = false; 
+for (let i = 0; !stopped; i++) {
+    if (i == 5) {
+        stopped = true; 
+    }
+    console.log(i);
+}
+
 
