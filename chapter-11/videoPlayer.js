@@ -19,4 +19,14 @@ class VideoPlayer {
             //pauses until we resolves this. After time, we don't have anything to do; 
         }
     }
+
+    stop() {
+        this.stopped = true; 
+    }
 }
+
+let video = new VideoPlayer(clipImages, 100);
+video.play().catch(e => {
+    console.log("PLayback failed" + e)
+}); 
+setTimeout(video.stop(), 15000);
