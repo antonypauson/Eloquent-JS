@@ -49,12 +49,25 @@ promise.then(result => { //then() works
 
 
 function textFile(filename) {
-    return new Promise(resolve =>{
-        readTextFile(filename, text => resolve(text));
+    return new Promise((resolve,reject) =>{
+        readTextFile(filename, (text, error) => {
+            if (error) reject(error); 
+            else resolve(text); 
+        } )
     })
 }
 
-textFile("plan.txt").then(console.log);
+new Promise((_, reject) => reject(new Error("Fail")))
+    .then(value => console.log("Handler 1: ", value))
+    .catch(reason => {
+        console.log("Caught failure " + reason);
+        return "Nothing";
+    })
+    .then(value => console.log("Handler 2: ", value));
+
+
+
+textFile("plan.txt").then(console.log).catch(console.log);
 
 function randomFile(listFile) {
     return textFile(listFile)
@@ -68,3 +81,17 @@ function jsonFile(filename) {
 }
 
 jsonFile("package.json").then(console.log);
+
+someAsyncFunction((error, value) => {
+    if (error) handleError(error); 
+    else processValue(value); 
+})
+
+function someAsyncFunction(callback) {
+    let success = Math.random * 1; 
+    if (success) {
+        callback(null,success); 
+    } else {
+        callback("Something went wrong", null);
+    }
+}
