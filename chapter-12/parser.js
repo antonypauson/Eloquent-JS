@@ -24,10 +24,32 @@ function parseExpression(program) {
     return parseApply(expression, program.slice(match[0].length)); 
 }
 
-parseExpression("121")
 
-
+//set up this dude
 function parseApply(expression, program) {
-    console.log(expression)
-    console.log(program);
+    program = skipSpace(program); 
+
+    if (program[0] != "(") {
+        return {expression: expression, rest: program};
+    }
+
+    program = skipSpace(program.slice(1)); 
+
+    expression = {type: "apply", operator: expression, args: []}; 
+
+    while (program[0] != ")") {
+        let arg = parseExpression(program); 
+        expression.args.push(arg.expression); 
+        program = skipSpace(arg.rest); 
+        if (program[0] == ",") {
+            program = skipSpace(program.slice(1)); 
+        } else if (program[0] != ")") {
+            throw new SyntaxError("Expected ',' or ')'"); 
+        }
+    }
+
+    return parseApply(expression, program.slice(1)); 
 }
+
+
+console.log(JSON.stringify(parseExpression("add (4,5)"), null, 2))
