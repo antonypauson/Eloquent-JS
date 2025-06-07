@@ -57,4 +57,6 @@ export default function parse(program) {
 
 console.log(parse("# hello\nx"));
 
+console.log(parse("a # one\n   # two\n()"));
+
 // console.log(JSON.stringify(parse("if(>(a,b))"), null, 2)); 
