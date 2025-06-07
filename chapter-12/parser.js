@@ -1,7 +1,5 @@
 import skipSpace from "./exercises/comments.js"; 
 
-
-
 function parseExpression(program) {
     program = skipSpace(program); 
 
@@ -55,8 +53,8 @@ export default function parse(program) {
     return expression; 
 }
 
-console.log(parse("# hello\nx"));
+// console.log(parse("# hello\nx"));
 
-console.log(parse("a # one\n   # two\n()"));
+// console.log(parse("a # one\n   # two\n()"));
 
 // console.log(JSON.stringify(parse("if(>(a,b))"), null, 2)); 

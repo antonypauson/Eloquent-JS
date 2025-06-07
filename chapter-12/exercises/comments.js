@@ -4,4 +4,4 @@ export default function skipSpace(string) {
 }
 
 
-console.log(skipSpace("a # one\n   # two\n()"));
+// console.log(skipSpace("a # one\n   # two\n()"));
