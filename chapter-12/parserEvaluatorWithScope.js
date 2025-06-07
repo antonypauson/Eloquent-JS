@@ -70,3 +70,10 @@ specialForms.while = (args, scope) => {
 }
 
 
+specialForms.do = (args, scope) => {
+    let value = false; 
+    for (let arg of args) {
+        value = evaluate(arg, scope); 
+    }
+    return value; 
+}
