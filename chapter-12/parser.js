@@ -60,4 +60,4 @@ function parse(program) {
     return expression; 
 }
 
-console.log(parse("+(a,10)")); 
+console.log(JSON.stringify(parse("if(>(a,b))"), null, 2)); 
