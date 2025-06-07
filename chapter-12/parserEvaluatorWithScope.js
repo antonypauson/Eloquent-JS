@@ -1,3 +1,5 @@
+import parse from './parser.js'; 
+
 const specialForms = Object.create(null); 
 
 function evaluate(expression, scope) {
@@ -43,7 +45,7 @@ let myScope = {
     '+': (x,y) => x + y
 }
 // console.log(evaluate(myExpression, myScope)); 
-console.log(myExpression)
+// console.log(myExpression)
 
 
 //adding to special forms
@@ -86,3 +88,11 @@ specialForms.define = (args, scope) => {
     scope[args[0].name] = value; 
     return value; 
 }
+
+const topScope = Object.create(null); 
+topScope.true = true; 
+topScope.false = false; 
+
+
+let prog = parse(`if(true,false,true)`); 
+console.log(evaluate(prog, topScope)); 

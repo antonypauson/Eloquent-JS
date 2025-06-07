@@ -51,7 +51,7 @@ function parseApply(expression, program) {
     return parseApply(expression, program.slice(1)); 
 }
 
-function parse(program) {
+export default function parse(program) {
     let {expression, rest} = parseExpression(program);
 
     if (skipSpace(rest).length > 0) {
@@ -60,4 +60,4 @@ function parse(program) {
     return expression; 
 }
 
-console.log(JSON.stringify(parse("if(>(a,b))"), null, 2)); 
+// console.log(JSON.stringify(parse("if(>(a,b))"), null, 2)); 
