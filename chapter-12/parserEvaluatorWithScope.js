@@ -89,7 +89,7 @@ specialForms.define = (args, scope) => {
     return value; 
 }
 
-const topScope = Object.create(null); 
+export const topScope = Object.create(null); 
 topScope.true = true; 
 topScope.false = false; 
 
@@ -149,16 +149,18 @@ specialForms.fun = (args, scope) => {
     }
 }
 
-run(`
-do(define(plusOne, fun(a, +(a, 1))),
-   print(plusOne(10)))
-`);
+export {specialForms, evaluate, run}; 
+
+// run(`
+// do(define(plusOne, fun(a, +(a, 1))),
+//    print(plusOne(10)))
+// `);
 
 
-run(`
-do(define(pow, fun(base, exp,
-     if(==(exp, 0),
-        1,
-        *(base, pow(base, -(exp, 1)))))),
-   print(pow(2, 10)))
-`);
+// run(`
+// do(define(pow, fun(base, exp,
+//      if(==(exp, 0),
+//         1,
+//         *(base, pow(base, -(exp, 1)))))),
+//    print(pow(2, 10)))
+// `);
