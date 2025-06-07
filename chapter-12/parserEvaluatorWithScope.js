@@ -81,7 +81,7 @@ specialForms.do = (args, scope) => {
 }
 
 specialForms.define = (args, scope) => {
-    if (args.length != 2 || args.length[0].type != "word") {
+    if (args.length != 2 || args[0].type != "word") {
         throw new SyntaxError("Incorrect use of define"); 
     }
     let value = evaluate(args[1], scope); 
@@ -95,4 +95,29 @@ topScope.false = false;
 
 
 let prog = parse(`if(true,false,true)`); 
-console.log(evaluate(prog, topScope)); 
+// console.log(evaluate(prog, topScope)); 
+
+for (let op of ["+", "-", "*", "/", "==", "<", ">"]) {
+    topScope[op] = Function("a,b", `return a ${op} b`); 
+}
+
+topScope.print = value => {
+    console.log(value); 
+    return value; 
+}
+
+// console.log(topScope)
+
+function run(program) {
+    return evaluate(parse(program), Object.create(topScope)); 
+}
+
+
+run(`
+do(define(total, 0),
+   define(count, 1),
+   while(<(count, 11),
+         do(define(total, +(total, count)),
+            define(count, +(count, 1)))),
+   print(total))
+`);

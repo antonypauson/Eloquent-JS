@@ -14,7 +14,7 @@ function parseExpression(program) {
     if (match = /^"([^"]*)"/.exec(program)) {
         expression = {type: "value", value: match[1]};
     } else if (match = /^\d+\b/.exec(program)) {
-        expression = {type: "value", value: match[0]};
+        expression = {type: "value", value: Number(match[0])};
     } else if (match = /^[^\s(),#"]+/.exec(program)) {
         expression = {type: "word", name: match[0]}; 
     } else {
