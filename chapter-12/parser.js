@@ -51,5 +51,13 @@ function parseApply(expression, program) {
     return parseApply(expression, program.slice(1)); 
 }
 
+function parse(program) {
+    let {expression, rest} = parseExpression(program);
 
-console.log(JSON.stringify(parseExpression("add (4,5)"), null, 2))
+    if (skipSpace(rest).length > 0) {
+        throw new SyntaxError("Unexpected text after program");
+    }
+    return expression; 
+}
+
+console.log(parse("+(a,10)")); 
