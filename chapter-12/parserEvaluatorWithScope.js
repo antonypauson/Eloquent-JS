@@ -47,7 +47,6 @@ console.log(myExpression)
 
 
 //adding to special forms
-
 specialForms.if = (args, scope) => {
     if (args.length != 3) {
         throw new SyntaxError("Wrong number of args to if"); 
@@ -58,4 +57,16 @@ specialForms.if = (args, scope) => {
     }
 }
 
-console.log(evaluate(myExpression2, {condition: true}))
+// console.log(evaluate(myExpression2, {condition: true}))
+
+specialForms.while = (args, scope) => {
+    if (args.length != 2) {
+        throw new SyntaxError("Wrong number of args to while"); 
+    } 
+    while (evaluate(args[0], scope) !== false) {
+        evaluate(args[1], scope); 
+    }
+    return false; 
+}
+
+
