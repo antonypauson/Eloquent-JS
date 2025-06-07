@@ -13,14 +13,21 @@ function compiler(expression) {
              return `(${compiler(args[0])} ? ${compiler(args[1])} : ${compiler(args[2])})`;
         }
 
-        // if (operator.type == "word" && operator.name == "while") {
-        //     if (args.length !== 2) throw new SyntaxError("Bad number of args to while");
-        //     return ``
-        // }
+        if (operator.type == "word" && operator.name == "while") {
+            if (args.length !== 2) throw new SyntaxError("Bad number of args to while");
+            return `(function() {
+            while (${compiler(args[0])}) {
+                ${compiler(args[1])};
+            }
+            return false;
+            })()`; 
+        }
 
-        // if (operator.type == "word" && operator.name == "do") {
-
-        // }
+        if (operator.type == "word" && operator.name == "do") {
+            return `(function() {
+                ${args.map(arg => compile(arg) + ';').join('\n')}
+            })()`;
+        }
 
         // if (operator.type == "word" && operator.name == "define") {
 
