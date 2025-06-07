@@ -1,11 +1,6 @@
-function skipSpace(string) {
-    let first = string.search(/\S/); //anything except space
-    // console.log(first);
-    if (first == -1) {
-        return ""; 
-    }
-    return string.slice(first); 
-}
+import skipSpace from "./exercises/comments.js"; 
+
+
 
 function parseExpression(program) {
     program = skipSpace(program); 
@@ -59,5 +54,7 @@ export default function parse(program) {
     }
     return expression; 
 }
+
+console.log(parse("# hello\nx"));
 
 // console.log(JSON.stringify(parse("if(>(a,b))"), null, 2)); 
