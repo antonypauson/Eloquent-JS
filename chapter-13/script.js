@@ -25,7 +25,11 @@ function talksAbout(node, string) {
 
 // console.log(body.childNodes[5].childNodes[0].nodeValue)
 
-let link = document.body.getElementsByTagName("a")[1];
-console.log(link.href); 
+// let link = document.body.getElementsByTagName("a")[1];
+// console.log(link.href); 
 
+
+let ostrich = document.getElementById("gertrude");
+console.log(ostrich.id);
+console.log(ostrich.src);   
 
