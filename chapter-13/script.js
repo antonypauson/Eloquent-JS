@@ -20,7 +20,12 @@ function talksAbout(node, string) {
     }
 }
 
-console.log(talksAbout(body, "book"));
+// console.log(talksAbout(body, "book"));
 
 
-console.log(body.childNodes[5].childNodes[0].nodeValue)
+// console.log(body.childNodes[5].childNodes[0].nodeValue)
+
+let link = document.body.getElementsByTagName("a")[1];
+console.log(link.href); 
+
+
