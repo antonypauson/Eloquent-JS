@@ -15,4 +15,10 @@ time("naive", () => {
     }
 })
 
+time("clever", () => {
+    let target = document.getElementById("two"); //selected two id element
+    target.appendChild(document.createTextNode("XXXXX")); //input 5 Xs
+    let total = Math.ceil(2000 / (target.offsetWidth / 5));//find out the offsetWidth of 1 element, then find out the offsetWidth of 2000. 
+    target.firstChild.nodeValue = "X".repeat(total); //add those amount to X. 
+})
 </script>
