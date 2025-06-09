@@ -1,0 +1,20 @@
+<p>
+    The <img src="img/cat.png" alt="Cat"> in the <img src="img/hat.png" alt="Hat"> 
+</p>
+<p>
+    <button onClick="replaceImages()">Replace</button>
+</p>
+<script>
+function replaceImages() {
+    // console.log("wow")
+    let printThis = document.body.getElementsByTagName("img");
+    for (let i = printThis.length - 1; i >= 0; i--) {
+        let image = printThis[i];
+        
+        if (image.alt) {
+            let text = document.createTextNode(image.alt);
+            image.parentNode.replaceChild(text, image);
+        }
+    }
+}
+</script>
