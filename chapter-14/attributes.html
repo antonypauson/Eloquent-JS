@@ -1,0 +1,12 @@
+<p data-classified="secret">The launch code is 00000</p>
+<p data-classified="unclassified">I have two feel</p>
+
+<script>
+    let allP = document.body.getElementsByTagName("p"); //get all elements by that tag into an array
+    for (let eachP of Array.from(allP)){ //convert that array into normal js array
+     if (eachP.getAttribute("data-classified") == "secret") //if the attribute values of data-classified is secret
+     {
+            eachP.remove(); //remove that entire eachP child of allP
+        }
+    }
+</script>

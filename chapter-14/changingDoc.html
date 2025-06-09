@@ -1,0 +1,32 @@
+<body>
+    <ul>
+        <li>Apple</li>
+        <li id="ban">Banana</li>
+        <li id="remove">Orange</li>
+    </ul>
+
+
+<script>
+    let list = document.getElementsByTagName("ul")[0];
+    
+    let orange = document.getElementById("remove");
+    orange.remove();
+    
+    let newFruit = document.createElement("li");
+    newFruit.textContent = "Mango";
+
+    list.appendChild(newFruit);
+
+    let grapeFruit = document.createElement("li");
+    grapeFruit.textContent = "Grape";
+
+    list.insertBefore(grapeFruit, list.firstElementChild);
+
+    let banana = document.getElementById("ban");
+    
+    let pazham = document.createElement("li");
+    pazham.textContent = "Pazham";
+    list.replaceChild(pazham, banana);
+
+</script>
+</body>

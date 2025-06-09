@@ -1,0 +1,13 @@
+This text is displayed <strong>inline</strong>
+
+<strong style="display: block;">as a block</strong>
+<strong style="display: none">not at all</strong>
+
+<p id="para" style="color: purple; font-family:Georgia, 'Times New Roman', Times, serif">Nice Text</p>
+
+<script>
+    let para = document.getElementById("para");
+    console.log(para.style.color);
+    para.style.color = "grey"; 
+    para.style.fontFamily = "monospace";
+</script>
