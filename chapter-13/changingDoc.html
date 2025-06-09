@@ -1,7 +1,7 @@
 <body>
     <ul>
         <li>Apple</li>
-        <li>Banana</li>
+        <li id="ban">Banana</li>
         <li id="remove">Orange</li>
     </ul>
 
@@ -21,6 +21,12 @@
     grapeFruit.textContent = "Grape";
 
     list.insertBefore(grapeFruit, list.firstElementChild);
+
+    let banana = document.getElementById("ban");
+    
+    let pazham = document.createElement("li");
+    pazham.textContent = "Pazham";
+    list.replaceChild(pazham, banana);
 
 </script>
 </body>
