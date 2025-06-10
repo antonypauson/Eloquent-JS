@@ -1,0 +1,19 @@
+<button>Click Me</button>
+<p>No handler here</p>
+
+<script>
+    let button = document.querySelector("button"); 
+    button.addEventListener("click", () => {
+        console.log("Button Clicked")
+    })
+
+    // we can use onClick instead of addEventListener, but onClick will only have one handler. 
+    // button.onclick = () => console.log("First");
+    // button.onclick = () => console.log("Second"); 
+
+    button.addEventListener("click", () => console.log("First")); 
+    button.addEventListener("click", () => console.log("Second")); 
+
+    
+
+</script>
