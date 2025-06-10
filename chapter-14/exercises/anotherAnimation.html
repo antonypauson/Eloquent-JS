@@ -1,0 +1,58 @@
+<style>
+#chicken {
+    width: 150px; 
+    position: absolute;
+}
+
+#roast {
+    width: 150px; 
+    position: absolute;
+}
+
+button {
+    position: relative;   
+}
+</style>
+<!-- <p style="text-align: justify;"> -->
+    <img id="chicken" src="chicken.gif">
+    <img id="roast" src="roasted-turkey.gif">
+    <button onClick="backToChicken()">Back to Chicken</button>
+<!-- </p> -->
+ <script>
+
+    
+    const chicken = document.querySelector("#chicken");
+    const roast = document.querySelector("#roast");
+
+    // console.log(chicken);
+    
+    let roastVisible = true; 
+
+    function backToChicken() {
+        roastVisible = false; 
+        roast.style.opacity = "0";
+    }
+
+    if (roastVisible) {
+        roast.style.opacity = "1"; 
+    }
+
+    let angle = Math.PI / 2; 
+    function animate(time, lastTime) {
+        if (lastTime != null) {
+            angle += (time - lastTime) * 0.001; 
+        }
+            chicken.style.top = (Math.sin(angle) * 40 + 40) + "px";
+            chicken.style.left = (Math.cos(angle) * 200 + 230) + "px";
+
+            roast.style.top = (Math.sin(angle) * 40 + 40) + "px";
+            roast.style.left = (Math.cos(angle) * 200 + 230) + "px";
+
+            setTimeout(() => {
+                roastVisible = true; 
+            }, 6000);
+            requestAnimationFrame(newTime => animate(newTime, time));
+        }
+    
+        requestAnimationFrame(animate); 
+ </script>
