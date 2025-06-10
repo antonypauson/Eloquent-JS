@@ -1,0 +1,21 @@
+<button>Act once button</button>
+<button id="babe">Babe, I'm learning JavaScript</button>
+
+<script>
+    let button = document.querySelector("button"); 
+    let babe = document.querySelector("#babe"); 
+
+
+    function once() {
+        console.log("Done"); 
+        button.removeEventListener("click", once); 
+    }
+    button.addEventListener("click", once); 
+
+    function babeFun() {
+        console.log("Babe, I'm learning JavaScript")
+        button.removeEventListener("click", babeFun); 
+    }
+
+    babe.addEventListener("click", babeFun); 
+</script>
