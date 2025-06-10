@@ -1,0 +1,23 @@
+<p>
+    Click <button>this button</button>
+</p>
+
+<script>
+    const button = document.querySelector("button"); 
+    const p = document.querySelector("p");
+    
+    button.addEventListener("click", (event) => {
+        console.log("Button"); 
+        // event.stopPropagation(); 
+    })
+
+    p.addEventListener("click", () => {
+        console.log("Paragraph")
+    })
+
+    document.addEventListener("click", () => {
+        console.log("Document")
+    })
+
+
+</script>
