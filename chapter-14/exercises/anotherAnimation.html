@@ -1,16 +1,13 @@
 <style>
-#chicken {
+#chicken, #roast {
     width: 150px; 
     position: absolute;
 }
 
-#roast {
-    width: 150px; 
-    position: absolute;
-}
 
 button {
     position: relative;   
+    left: 100px; 
 }
 </style>
 <!-- <p style="text-align: justify;"> -->
@@ -26,16 +23,20 @@ button {
 
     // console.log(chicken);
     
-    let roastVisible = true; 
+    let roastVisible = false; 
 
+    roast.style.opacity = "0";
+    
     function backToChicken() {
-        roastVisible = false; 
-        roast.style.opacity = "0";
+        roastVisible = false;
+        const button = document.querySelector("button"); 
     }
 
-    if (roastVisible) {
-        roast.style.opacity = "1"; 
-    }
+    setTimeout(() => {
+                roastVisible = true; 
+            }, 6000);
+
+            
 
     let angle = Math.PI / 2; 
     function animate(time, lastTime) {
@@ -48,9 +49,14 @@ button {
             roast.style.top = (Math.sin(angle) * 40 + 40) + "px";
             roast.style.left = (Math.cos(angle) * 200 + 230) + "px";
 
-            setTimeout(() => {
-                roastVisible = true; 
-            }, 6000);
+            if (!roastVisible) {
+                roast.style.opacity = "0"; 
+            } else {
+                roast.style.opacity = "1"; 
+            }
+    
+
+           
             requestAnimationFrame(newTime => animate(newTime, time));
         }
     

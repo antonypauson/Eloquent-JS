@@ -1,0 +1,13 @@
+<p>Click this document to active the handler</p>
+
+<script>
+    window.addEventListener("click", () => {
+        console.log("You knocked? ")
+    })
+
+    window.addEventListener("keydown", event => {
+        if (event.key === "Enter") {
+            console.log("You pressed Enter"); 
+        }
+    })
+</script>
