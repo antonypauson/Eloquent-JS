@@ -1,6 +1,10 @@
 <p>This page turns violet when you hold the V key</p>
 
+<input type="text" placeholder="Type something..."/>
+
 <script>
+    const input = document.querySelector("input"); 
+
     window.addEventListener("keydown", event => {
         
         if (event.key == "v") {
@@ -17,5 +21,16 @@
             console.log("Space + Control"); 
         }
     })
+
+    input.addEventListener("keydown", event => {
+        console.log("KEYDOWN", event.key); 
+    })
+
+    input.addEventListener("keyup", event => {
+        console.log("KEYUP", event.key); 
+        
+    })
+
+    
 
 </script>
