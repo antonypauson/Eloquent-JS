@@ -3,6 +3,12 @@ height: 100px; background: blue; ">
 </div>
 
 
+<div id="container">
+    <p id="p2">Paragraph 1</p>
+    <p id="p1">Paragraph 2</p>
+</div>
+
+
 
 <script>
     const box = document.querySelector("div"); 
@@ -17,4 +23,26 @@ height: 100px; background: blue; ">
         box.style.background = "blue";  
 
     })
+
+    const container = document.querySelector("#container"); 
+    const p1 = document.querySelector("#p1");
+    const p2 = document.querySelector("#p2"); 
+
+    //click refers to mousedown and mouseup
+    //if mousedown happens in one element
+    //and mouseup happens in another
+    //click will be triggered on parent element;
+    container.addEventListener("click", event => {
+        console.log("CONTAINER"); 
+        event.stopPropagation(); 
+    })
+
+    p1.addEventListener("click", () => {
+        console.log("P2"); 
+    })
+
+    p2.addEventListener("click", () => {
+        console.log("P1"); 
+    })
+    
 </script>
