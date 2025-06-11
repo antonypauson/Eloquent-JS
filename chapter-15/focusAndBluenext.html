@@ -20,4 +20,10 @@
             help.textContent = ""; 
         })
     }
+
+window.addEventListener("beforeunload", event => {
+    event.preventDefault(); // Required for some browsers
+    event.returnValue = "You have unsaved changes. Are you sure you want to leave?";
+    });
+
 </script>
