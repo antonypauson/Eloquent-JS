@@ -1,0 +1,20 @@
+<div style="width: 200px; 
+height: 100px; background: blue; ">
+</div>
+
+
+
+<script>
+    const box = document.querySelector("div"); 
+
+    box.addEventListener("mousedown", () => {
+        console.log("Mouse button pressed");
+        box.style.background = "black";  
+    })
+
+    box.addEventListener("mouseup", () => {
+        console.log("Mouse released"); 
+        box.style.background = "blue";  
+
+    })
+</script>
