@@ -1,0 +1,27 @@
+<style>
+input:focus {
+    background-color: aquamarine;
+}
+
+
+
+</style>
+
+<input type="text" id="nameInput" placeholder="Enter your name">
+<p></p>
+
+<script>
+const input = document.querySelector("#nameInput");
+const status = document.querySelector("p"); 
+
+input.addEventListener("focus", () => {
+    status.textContent = "Input is focused";
+    status.style.color = "green"; 
+})
+
+input.addEventListener("blur", () => {
+    status.textContent = "Input lost focus";
+    status.style.color = "red"; 
+})
+
+</script>
