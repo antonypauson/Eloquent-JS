@@ -1,0 +1,21 @@
+<input id="number" type="number" placeholder="Enter a number">
+<button>Send to Worker</button>
+<p>Result: </p>
+
+<script>
+const input = document.querySelector("input"); 
+const button = document.querySelector("button");
+const result = document.querySelector("p");
+
+const myWorker = new Worker("anotherWorker.js"); 
+
+myWorker.addEventListener("message", event => {
+    result.textContent = "Result: " + event.data; 
+})
+
+button.addEventListener("click", () => {
+    const number = Number(input.value); 
+    myWorker.postMessage(number); 
+})
+    
+</script>

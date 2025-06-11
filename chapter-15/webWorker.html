@@ -50,17 +50,19 @@ const second = document.querySelector("#number2");
 const result = document.querySelector(".result");
 
 if (window.Worker) {
+    //created a webworer using constructor Worker()
     const myWorker = new Worker("worker.js"); 
 
+    //loop through each element and apply this forEach
     [first, second].forEach((input) => {
-        input.onchange = () => {
-            myWorker.postMessage([first.value, second.value]);
+        input.onchange = () => { //when a change occurs
+            myWorker.postMessage([first.value, second.value]); //give the values to web worker
             console.log("Message passed to worker"); 
         }
     })
-
+    //when a value recieves
     myWorker.onmessage = (e) => {
-        result.textContent = e.data;
+        result.textContent = e.data; //change
         console.log("Message received from worker");
     }
 }
