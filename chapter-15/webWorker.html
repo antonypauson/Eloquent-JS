@@ -1,0 +1,70 @@
+<style>
+    p {
+        margin: 0 0 1rem 0; 
+    }
+
+    .controls {
+        padding: 4vw;
+        width: 75%; 
+        margin: 3vw auto; 
+        border: 2px solid; 
+        border-radius: 6px;
+    }
+
+    .controls label, 
+    .controls p, 
+    .controls input {
+        font-size: 3vw;
+    }
+
+    .controls div {
+        padding-bottom: 1rem;
+    }
+
+    
+</style>
+
+<h1>
+    Web<br>Workers<br>basic<br>example
+</h1>
+
+<div class="controls">
+    <form>
+        <div>
+            <label>Multiply Number 1: </label>
+            <input type="text" id="number1" value="0">
+        </div>
+        <div>
+            <label>Multiply Number 2: </label>
+            <input type="text" id="number2" value="0">
+        </div>
+    </form>
+
+    <p class="result">Result: 0</p>
+</div>
+
+<script>
+
+const first = document.querySelector("#number1");
+const second = document.querySelector("#number2");
+const result = document.querySelector(".result");
+
+if (window.Worker) {
+    //created a webworer using constructor Worker()
+    const myWorker = new Worker("worker.js"); 
+
+    //loop through each element and apply this forEach
+    [first, second].forEach((input) => {
+        input.onchange = () => { //when a change occurs
+            myWorker.postMessage([first.value, second.value]); //give the values to web worker
+            console.log("Message passed to worker"); 
+        }
+    })
+    //when a value recieves
+    myWorker.onmessage = (e) => {
+        result.textContent = e.data; //change
+        console.log("Message received from worker");
+    }
+}
+
+</script>

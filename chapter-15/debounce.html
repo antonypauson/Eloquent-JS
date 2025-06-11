@@ -1,0 +1,21 @@
+<h2>Debounce</h2>
+<input type="text" placeholder="Type to search">
+<p></p>
+
+<script>
+    const input = document.querySelector("input"); 
+    const result = document.querySelector("p"); 
+
+    let timeout;
+    
+    //whenenver I'm inputting, restart the timeout function from start. So I have to wait for 1s to see the result 
+    input.addEventListener("input", () => {
+        clearTimeout(timeout); //clear the timeout assigned. 
+
+        //start the timeout for 1000, only then output the result; 
+
+        timeout = setTimeout(() => {
+            result.textContent = `Searching for ${input.value}...`;
+        }, 1000); 
+    })
+</script>

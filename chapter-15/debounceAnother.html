@@ -1,0 +1,19 @@
+<textarea>
+Type something here...
+</textarea>
+
+<p></p>
+
+<script>
+    let textArea = document.querySelector("textarea"); 
+    let result = document.querySelector("p");
+    let timeout; 
+
+    textArea.addEventListener("input", () => {
+        clearTimeout(timeout);
+        timeout = setTimeout(() => {
+            result.textContent = textArea.value; 
+            console.log(result)
+        }, 500)
+    });
+</script>

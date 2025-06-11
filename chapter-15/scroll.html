@@ -1,0 +1,29 @@
+
+<style>
+    body {
+        height: 2000px;
+        margin: 0; 
+    }
+
+    #scroll {
+        position: fixed; 
+        top: 10px; 
+        left: 10px; 
+        background: black; 
+        color: white; 
+        padding: 5px 10px; 
+        font-family: sans-serif;
+    }
+</style>
+
+<div id="scroll">
+    Scroll Y: 0
+</div>
+
+<script>
+const scroll = document.querySelector("div"); 
+
+window.addEventListener("scroll", () => {
+    scroll.textContent = `Scroll Y: ${window.scrollY.toFixed(0)}`
+})
+</script>

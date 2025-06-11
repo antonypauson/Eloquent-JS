@@ -1,0 +1,38 @@
+<p>You can change the size of this bar</p>
+
+<div style="background: orange; width: 60px; height: 20px">
+
+</div>
+<script>
+    let lastX; 
+    let bar = document.querySelector("div");
+
+    //when bar is held down by mouse
+    bar.addEventListener("mousedown", event => {
+        if (event.button == 0) {
+        //we check if its left clicked
+        //then store the last value of clientX
+            lastX = event.clientX;
+        //then call mouesmove on window 
+            window.addEventListener("mousemove", moved);
+            //call mouse move on windows, to get the next clientX when mouse was moved. 
+            event.preventDefault();
+            //prevent default to stop what the browser does on default
+        }
+    })
+
+    function moved(event) {
+        if (event.buttons == 0) {
+            window.removeEventListener("mousemove", moved); 
+            //if button released stop this
+        } else {
+            let dist = lastX - event.clientX;
+            //calculate the difference between the two clientX
+            let newWidth = Math.max(10, bar.offsetWidth + dist);
+            bar.style.width = newWidth + "px";
+            lastX = event.clientX; 
+            //update lastX, and bar's width
+        }
+    }
+
+</script>
