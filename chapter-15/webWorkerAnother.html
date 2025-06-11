@@ -7,13 +7,13 @@ const input = document.querySelector("input");
 const button = document.querySelector("button");
 const result = document.querySelector("p");
 
-const myWorker = new Worker("anotherWorker.js"); 
+const myWorker = new Worker("anotherWorker.js"); //created a worker using our script
 
-myWorker.addEventListener("message", event => {
+myWorker.addEventListener("message", event => { //calling the output from that worker
     result.textContent = "Result: " + event.data; 
 })
 
-button.addEventListener("click", () => {
+button.addEventListener("click", () => { //when clicked, we are sending data to worker. 
     const number = Number(input.value); 
     myWorker.postMessage(number); 
 })

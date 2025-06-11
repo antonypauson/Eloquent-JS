@@ -1,4 +1,4 @@
-addEventListener("message", event => {
+addEventListener("message", event => { //getting data
     const result = event.data * event.data;
-    postMessage(result); 
+    postMessage(result);  //sending data 
 })
