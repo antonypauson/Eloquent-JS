@@ -1,0 +1,31 @@
+<style>
+.trail {
+    position: absolute;
+    height: 6px; 
+    width: 6px; 
+    border-radius: 3px;
+    background: #008080;
+}
+</style>
+
+<script>
+
+let dots = []; 
+let current = 0; 
+for (let i = 0; i < 20;i++) {
+    let div = document.createElement("div"); 
+    div.className = "trail"; 
+    // div.textContent = "bang"; 
+    // document.body.appendChild("div"); 
+    dots.push(div); 
+}
+
+function trail(event) {
+    let dot = dots[Math.floor(Math.random() * 20)]; 
+    dot.style.left = event.pageX + "px"; 
+    dot.style.top = event.pageY + "px"; 
+    document.body.appendChild(dot)
+    console.log(dot); 
+}
+window.addEventListener("mousemove", trail); 
+</script>
