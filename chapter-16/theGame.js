@@ -8,6 +8,26 @@ let simpleLevelPlan = `
 ......#++++++++++++#..
 ......##############..
 ......................`;
+// new Vec(x,y)
+class Vec {
+    constructor(x,y) {
+        this.x = x; 
+        this.y = y; 
+    }
+
+    plus(other) {
+        let ansX = this.x + other.x; 
+        let ansY = this.y + other.y;
+        return new Vec(ansX, ansY); 
+    }
+
+    times(factor) {
+        return new Vec(this.x * factor, 
+            this.y * factor
+        ); 
+    }
+}
+
 
 class Level {
     constructor(plan) { //convert each row 
@@ -32,24 +52,36 @@ class Level {
     }
 }
 
-// new Vec(x,y)
-class Vec {
-    constructor(x,y) {
-        this.x = x; 
-        this.y = y; 
+
+class State {
+    constructor(level, actors, status) {
+        this.level = level; 
+        this.actors = actors;
+        this.status = status;  
     }
 
-    plus(other) {
-        let ansX = this.x + other.x; 
-        let ansY = this.y + other.y;
-        return new Vec(ansX, ansY); 
+    static start(level) {
+        return new State(level, level.startActors, "playing"); 
     }
 
-    times(factor) {
-        return new Vec(this.x * factor, 
-            this.y * factor
-        ); 
+    get player() {
+        return this.actors.find(a => a.type == "player"); 
     }
+}
+
+
+class Lava {
 
 }
+
+
+class Coin {
+
+}
+
+class Player {
+
+}
+
+
 const level = new Level(simpleLevelPlan); 
