@@ -95,9 +95,24 @@ class Lava {//track pos, speed and reset for dripping lava
 Lava.prototype.size = new Vec(1,1); 
 
 
-class Coin {
+class Coin { //pos, base pos, wobble start point
+    constructor(pos, basePos, wobble) {
+        this.pos = pos; 
+        this.basePos = basePos; 
+        this.wobble = wobble; 
+    }
 
+    get type() {
+        return "coin"; 
+    }
+
+    static create(pos) { //adding a small offset to pos
+        let basePos = pos.plus(new Vec(0.2, 0.1)); 
+        return new Coin(basePos, basePos, Math.random() * Math.PI*2); 
+    }
 }
+
+Coin.prototype.size = new Vec(0.6, 0.6); 
 
 class Player {
     constructor(pos, speed) {
