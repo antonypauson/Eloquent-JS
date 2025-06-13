@@ -1,0 +1,48 @@
+<tab-panel>
+  <div data-tabname="one">Tab one</div>
+  <div data-tabname="two">Tab two</div>
+  <div data-tabname="three">Tab three</div>
+</tab-panel>
+
+<script>
+function asTabs(node) {
+  //select all the children of tab panel, create {button, node} for each tab, give event listener to button; 
+  let tabs = Array.from(node.children).map(node => {
+    let button = document.createElement("button"); 
+    button.textContent = node.getAttribute("data-tabname"); 
+    let tab = {node, button}; 
+    button.addEventListener("click", () => selectTab(tab)); 
+    console.log(tab); 
+    return tab; 
+  }); 
+
+  let tabList = document.createElement("div");  //attach those tabs before the children of tab panel; 
+  for (let {button} of tabs) tabList.appendChild(button); 
+  node.insertBefore(tabList, node.firstChild); 
+
+  // console.log(tabs);
+  //whenever a button is selected, if our tab is selected tab, change the style. 
+  function selectTab(selectedTab) {
+  // console.log(selectedTab); 
+    for (let tab of tabs) {
+      // console.log(tab); 
+      if (tab != selectedTab)  {
+        tab.node.style.display = "none"; 
+        tab.button.style.color = "";
+      } else {
+        tab.node.style.display = "block"; 
+        tab.button.style.color = "red";
+      }
+    }
+}
+    selectTab(tabs[0]);
+
+}
+
+
+
+asTabs(document.querySelector("tab-panel")); 
+//asTabs function
+
+
+</script>
