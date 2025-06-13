@@ -131,5 +131,14 @@ class Player {
 
 Player.prototype.size = new Vec(0.8, 1.5); 
 
-
+const levelChars = {
+    ".": "empty", 
+    "#": "wall",
+    "+": "lava",
+    "@": Player,
+    "o": Coin,
+    "=": Lava,
+    "|": Lava,
+    "v": Lava
+}
 // const level = new Level(simpleLevelPlan); 
