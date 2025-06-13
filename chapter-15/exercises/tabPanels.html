@@ -6,6 +6,7 @@
 
 <script>
 function asTabs(node) {
+  //select all the children of tab panel, create {button, node} for each tab, give event listener to button; 
   let tabs = Array.from(node.children).map(node => {
     let button = document.createElement("button"); 
     button.textContent = node.getAttribute("data-tabname"); 
@@ -15,11 +16,12 @@ function asTabs(node) {
     return tab; 
   }); 
 
-  let tabList = document.createElement("div"); 
+  let tabList = document.createElement("div");  //attach those tabs before the children of tab panel; 
   for (let {button} of tabs) tabList.appendChild(button); 
   node.insertBefore(tabList, node.firstChild); 
 
-  // console.log(tabs); 
+  // console.log(tabs);
+  //whenever a button is selected, if our tab is selected tab, change the style. 
   function selectTab(selectedTab) {
   // console.log(selectedTab); 
     for (let tab of tabs) {
@@ -40,6 +42,7 @@ function asTabs(node) {
 
 
 asTabs(document.querySelector("tab-panel")); 
+//asTabs function
 
 
 </script>
