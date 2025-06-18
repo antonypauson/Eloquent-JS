@@ -1,4 +1,7 @@
-let simpleLevelPlan = `
+<link rel="stylesheet" href="game.css"> 
+
+<script>
+    let simpleLevelPlan = `
 ......................
 ..#................#..
 ..#..............=.#..
@@ -156,3 +159,27 @@ function elt(name, attrs, ...children) {
     return dom; 
 }
 
+class DOMDisplay {
+    constructor(parent, level) {
+        this.dom = elt("div", {class: "game"}, drawGrid(level)); 
+        this.actorLayer = null; 
+        parent.appendChild(this.dom); 
+    }
+}
+
+const scale = 20; 
+
+function drawGrid(level) {
+    return elt("table", {
+        class: "background", 
+        style: `width: ${level.width * scale}px`
+    }, ...level.rows.map(row => 
+        elt("tr", {style: `height: ${scale}px`}, 
+            ...row.map(type => elt("td", {class: type}))
+        ))); 
+}
+
+
+ let simpelLevel = new Level(simpleLevelPlan);
+ console.log(simpelLevel)
+</script>
