@@ -223,6 +223,7 @@ DOMDisplay.prototype.scrollPlayerIntoView = function(state) {
   }
 };
 
+
  let simpelLevel = new Level(simpleLevelPlan);
 //  console.log(simpelLevel)
 let display = new DOMDisplay(document.body, simpelLevel); 
