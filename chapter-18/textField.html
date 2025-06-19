@@ -1,0 +1,13 @@
+<form>
+    <input type="text">Text Field
+    <!-- <input type="number"> Number Field -->
+</form>
+<script>
+    const text = document.querySelector("input"); 
+    // console.log(text.value); 
+    text.addEventListener("input", () => {
+        console.log("Current Value: ", text.value); 
+    })
+
+    text.value = "bang"; 
+</script>
