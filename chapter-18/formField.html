@@ -14,9 +14,14 @@
 </form>
 <script>
     let form = document.querySelector("form"); 
-    console.log(form.elements[1].type);
+    // console.log(form.elements[1].type);
     
-    console.log(form.elements.password.type); 
+    // console.log(form.elements.password.type); 
 
-    console.log(form.elements.name.form == form); 
+    // console.log(form.elements.name.form == form); 
+
+    form.addEventListener("submit", event => {
+        console.log("Saving value", form.elements.name.value); 
+        event.preventDefault(); 
+    })
 </script>
