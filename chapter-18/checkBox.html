@@ -1,10 +1,10 @@
 <label>
-    <input type="checkbox" id="purple">Make this page purple
+    <input type="checkbox" id="purple" checked>Make this page purple
 </label>
 
 <script>
    let checkbox = document.querySelector("#purple"); 
-//    console.log(checkbox);  
+   console.log("Checked: ", checkbox.checked);  
     checkbox.addEventListener("change", () => {
         document.body.style.background = checkbox.checked ? "mediumpurple" : ""; 
     })
